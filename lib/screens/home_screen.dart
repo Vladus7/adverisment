@@ -238,7 +238,7 @@ class MapSampleState extends State<MapSample> {
               ]),
               closeOnSwipeDown: false,
               showHead: true)),
-          body: Stack(children: <Widget>[
+          body: //Stack(children: <Widget>[
             Container(
               child: GoogleMap(
                 mapType: MapType.normal,
@@ -250,29 +250,30 @@ class MapSampleState extends State<MapSample> {
                 },
               ),
             ),
-            RaisedButton(
-              onPressed: () async {
+//            RaisedButton(
+//              onPressed: () async {
+////                Prediction p = await PlacesAutocomplete.show(
+////                    context: context,
+////                    apiKey: kGoogleApiKey,
+////                    mode: Mode.overlay, // Mode.fullscreen
+////                    language: "ua",
+////                    components: [new Component(//Component.country, "uk",
+////                        Component.locality, "ua")]);
+////                displayPrediction(p);
 //                Prediction p = await PlacesAutocomplete.show(
-//                    context: context,
-//                    apiKey: kGoogleApiKey,
-//                    mode: Mode.overlay, // Mode.fullscreen
-//                    language: "ua",
-//                    components: [new Component(//Component.country, "uk",
-//                        Component.locality, "ua")]);
+//                    //components: [new Component(Component.country, "uk",)],
+//                  context: context, apiKey: kGoogleApiKey,
+//                  mode: Mode.overlay
+//                );
 //                displayPrediction(p);
-                Prediction p = await PlacesAutocomplete.show(
-                    //components: [new Component(Component.country, "uk",)],
-                  context: context, apiKey: kGoogleApiKey,
-                  mode: Mode.overlay
-                );
-                displayPrediction(p);
-                print(
-                    '////////////////////////////////////////////////////////////////////');
-                print(p);
-              },
-              child: Text('Find address'),
-            )
-          ])),
+//                print(
+//                    '////////////////////////////////////////////////////////////////////');
+//                print(p);
+//              },
+//              child: Text('Find address'),
+//            )
+//          ])
+    ),
 //      appBar: AppBar(
 //        title: Text('Map',style: TextStyle(color: Color(0xfffafafa))),
 //    backgroundColor: Color(0xff1d2120),

@@ -8,7 +8,7 @@ class AccountScreen extends StatefulWidget {
 }
 
 class AccountScreenState extends State<AccountScreen> {
-  double appBarHeight = 200.0;
+  double appBarHeight = 190.0;
 
 //  @override
 //  Widget build(BuildContext context) {
@@ -462,6 +462,7 @@ class AccountScreenState extends State<AccountScreen> {
       Stack(
       children: <Widget>[
         Scaffold(
+      resizeToAvoidBottomPadding: false,
 //        floatingActionButtonLocation: FloatingActionButtonLocation.startTop,
 //        floatingActionButton: FloatingActionButton(
 //            child: Icon(
@@ -521,9 +522,15 @@ class AccountScreenState extends State<AccountScreen> {
 //                ),
                 )];
             },
-            body: ListView(children: <Widget>[
-              Container(
-                  child: Column(
+            body:
+    SingleChildScrollView(
+    child: ConstrainedBox(
+    constraints: BoxConstraints(),
+    child:
+//            ListView(children: <Widget>[
+//              Container(
+//                  child:
+                  Column(
                 children: <Widget>[
                   ListTile(
                       title: Text('Driving information',
@@ -590,16 +597,16 @@ class AccountScreenState extends State<AccountScreen> {
                           ))),
                   Container(
                     //margin: EdgeInsets.symmetric(vertical: 20.0),
-                    height: 350.0,
+                    height: 365.0,
                     child: ListView(
                       scrollDirection: Axis.horizontal,
                       children: <Widget>[
                         Container(
                           decoration: BoxDecoration(
                               color: Color(0xff171918),
-                              borderRadius: new BorderRadius.circular(10.0)),
+                              borderRadius: new BorderRadius.circular(5.0)),
                           margin: EdgeInsets.only(left: 10.0, right: 10.0),
-                          height: 350,
+                          height: 380,
                           width: 300.0,
                           //color: Color(0xff171918),
                           child: Container(
@@ -724,6 +731,7 @@ class AccountScreenState extends State<AccountScreen> {
                                         ),
                                       ),
                                     )),
+                                SizedBox(height: 20,),
                               ],
                             ),
                           ),
@@ -731,7 +739,7 @@ class AccountScreenState extends State<AccountScreen> {
                         Container(
                           decoration: BoxDecoration(
                               color: Color(0xff171918),
-                              borderRadius: new BorderRadius.circular(10.0)),
+                              borderRadius: new BorderRadius.circular(5.0)),
                           margin: EdgeInsets.only(left: 10.0, right: 10.0),
                           height: 350,
                           width: 300.0,
@@ -858,12 +866,13 @@ class AccountScreenState extends State<AccountScreen> {
                                         ),
                                       ),
                                     )),
+                                SizedBox(height: 20,)
                               ],
                             ),
                           ),
-                        ),
-                      ],
-                    ),
+//                        ),
+//                      ],
+//                    ),
                   ),
                 ],
               )),
@@ -879,9 +888,7 @@ class AccountScreenState extends State<AccountScreen> {
                     children: <Widget>[
                       SizedBox(width: 40,),
                       Column(children: <Widget>[
-
                         Row(children: <Widget>[
-
                           Icon(Icons.landscape, color: Color(0xfffafafa)),
                           Text(
                             '213.71Km',
@@ -889,9 +896,10 @@ class AccountScreenState extends State<AccountScreen> {
                                 color: Color(0xfffafafa), fontSize: 20),
                           ),
                         ]),
+                        SizedBox(height: 20,),
                         Text(
                           'You travelled',
-                          style: TextStyle(color: Color(0xfffafafa)),
+                          style: TextStyle(color: Color(0xff424242)),
                         )
                       ]),
                       SizedBox(
@@ -906,15 +914,16 @@ class AccountScreenState extends State<AccountScreen> {
                                 color: Color(0xfffafafa), fontSize: 20),
                           ),
                         ]),
+                        SizedBox(height: 20,),
                         Text(
                           'PLN Earned',
-                          style: TextStyle(color: Color(0xfffafafa)),
+                          style: TextStyle(color: Color(0xff424242)),
                         ),
                       ])
                     ],
                   ),SizedBox(height: 20,),],
                   )),
-            ])),
+            ])))),
         ),
         ),  new Positioned(
           child: new FloatingActionButton(

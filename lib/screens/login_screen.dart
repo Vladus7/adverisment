@@ -3,6 +3,8 @@ import 'package:advertise/screens/regiter_screen.dart';
 import 'package:advertise/models/user_models.dart';
 import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -17,27 +19,23 @@ class _LoginScreenState extends State<LoginScreen> {
     final FacebookLoginResult result =
     await fbLogin.logInWithReadPermissions(['email', 'public_profile']);
 
-    FirebaseUser user =
-    await FirebaseAuth.instance.signInWithFacebook(accessToken: result.accessToken.token);
-    //Token: ${accessToken.token}
-
-    ProviderDetails userInfo = new ProviderDetails(
-        user.providerId, user.uid, user.displayName, user.photoUrl, user.email);
-
-    List<ProviderDetails> providerData = new List<ProviderDetails>();
-    providerData.add(userInfo);
-
-    UserInfoDetails userInfoDetails = new UserInfoDetails(
-        user.providerId,
-        user.uid,
-        user.displayName,
-        user.photoUrl,
-        user.email,
-        user.isAnonymous,
-        user.isEmailVerified,
-        providerData);
-    Navigator.push(
-        context, MaterialPageRoute(builder: (context) => RegisterForm()));
+    switch (result.status) {
+      case FacebookLoginStatus.loggedIn:
+        final token = result.accessToken.token;
+        final graphResponse = await http.get(
+            'https://graph.facebook.com/v2.12/me?fields=name,picture.width(800).height(800),first_name,last_name,email&access_token=${token}');
+        final profile = jsonDecode(graphResponse.body);
+        print(profile);
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => RegisterForm()));
+        break;
+      case FacebookLoginStatus.cancelledByUser:
+        print(FacebookLoginStatus.cancelledByUser);
+        break;
+      case FacebookLoginStatus.error:
+        print(result.errorMessage);
+        break;
+    }
   }
 
   @override
