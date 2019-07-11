@@ -343,6 +343,8 @@ class _AskColorState extends State<AskColor> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xff414141),
-        body: ColorPicker(color: Colors.blue, onChanged: (value){},));
+        body: ColorPicker(color: Colors.blue, onChanged: (value){
+          print(value);
+        },));
   }
 }

@@ -17,7 +17,7 @@ class _LoginScreenState extends State<LoginScreen> {
   FacebookLogin fbLogin = FacebookLogin();
   Future<void> signIn() async {
     final FacebookLoginResult result =
-    await fbLogin.logInWithReadPermissions(['email', 'public_profile']);
+    await fbLogin.logInWithReadPermissions(['email']);
 
     switch (result.status) {
       case FacebookLoginStatus.loggedIn:
@@ -26,6 +26,7 @@ class _LoginScreenState extends State<LoginScreen> {
             'https://graph.facebook.com/v2.12/me?fields=name,picture.width(800).height(800),first_name,last_name,email&access_token=${token}');
         final profile = jsonDecode(graphResponse.body);
         print(profile);
+        print(profile["email"]);
         Navigator.push(
             context, MaterialPageRoute(builder: (context) => RegisterForm()));
         break;

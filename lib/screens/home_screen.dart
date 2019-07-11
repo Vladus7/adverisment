@@ -9,6 +9,7 @@ import 'package:advertise/screens/tasks_screen.dart';
 import 'package:advertise/screens/account_screen.dart';
 import 'package:flutter_google_places/flutter_google_places.dart';
 import 'package:geocoder/geocoder.dart';
+import 'package:location/location.dart' as loc;
 import 'package:google_maps_webservice/places.dart';
 
 //const kGoogleApiKey = "AIzaSyC9NLOvza3c7YwkgbcQi7sL5al9qs1bsqA";
@@ -23,9 +24,51 @@ class MapSample extends StatefulWidget {
 }
 
 class MapSampleState extends State<MapSample> {
-
-
+  final Set<Marker> _markers = {};
+  var _center = const LatLng(45.521563, -122.677433);
   Completer<GoogleMapController> _controller = Completer();
+
+
+  var currentLocation;
+//  _getLocation() async{
+//    var location = new loc.Location();
+//    try {
+//      currentLocation = await location.getLocation();
+//    } on Exception {//catch (e) {
+////      if (e.code == 'PERMISSION_DENIED') {
+////        error = 'Permission denied';
+////      }
+//      currentLocation = null;
+//    }
+//  }
+String place = 'London';
+  void _onAddMarkerButtonPressed() async{
+    var location = new loc.Location();
+    try {
+      currentLocation = await location.getLocation();
+      //_center = currentLocation;
+      //print(currentLocation.latitude, currentLocation.longitude);
+      _center = LatLng(currentLocation.latitude, currentLocation.longitude);
+      setState(() {
+        _markers.add(Marker(
+          // This marker id can be anything that uniquely identifies each marker.
+          markerId: MarkerId(LatLng(currentLocation.latitude, currentLocation.longitude).toString()),
+          position: LatLng(currentLocation.latitude, currentLocation.longitude),
+          infoWindow: InfoWindow(
+            title: 'Your locate',
+            //snippet: '5 Star Rating',
+          ),
+          
+          icon: BitmapDescriptor.fromAsset("images/google-map-pointer-grey-th.png"),
+        ));
+      });
+    } on Exception {//catch (e) {
+//      if (e.code == 'PERMISSION_DENIED') {
+//        error = 'Permission denied';
+//      }
+      currentLocation = null;
+    }
+  }
 
   static final CameraPosition _kGooglePlex = CameraPosition(
     target: LatLng(50.432853, 30.475761),
@@ -48,7 +91,10 @@ class MapSampleState extends State<MapSample> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return
+//      Stack(
+//        children: <Widget>[
+          Scaffold(
 //      key: _scaffoldKey,
       bottomSheet: BottomSheetStateful(
           attribute: (bs1Attr = BSAttribute(
@@ -238,18 +284,74 @@ class MapSampleState extends State<MapSample> {
               ]),
               closeOnSwipeDown: false,
               showHead: true)),
-          body: //Stack(children: <Widget>[
+          body: Stack(children: <Widget>[
             Container(
               child: GoogleMap(
+                markers: _markers,
                 mapType: MapType.normal,
-                myLocationEnabled: true,
-                myLocationButtonEnabled: true,
-                initialCameraPosition: _kGooglePlex,
+                //myLocationEnabled: true,
+                //myLocationButtonEnabled: true,
+                initialCameraPosition:CameraPosition(
+                  target: _center,
+                  zoom: 20.0,
+                ),
                 onMapCreated: (GoogleMapController controller) {
                   _controller.complete(controller);
                 },
               ),
             ),
+          Positioned(
+            child: new FloatingActionButton(
+              child: Icon(
+                CupertinoIcons.location,
+                color: Color(0xfffafafa),
+              ),
+              backgroundColor: Color(0xff31803f),
+              onPressed: () {
+                _onAddMarkerButtonPressed();
+              },
+            ),
+            right: 10.0,
+            top: 600.0,
+          ),
+            Positioned(
+              child: ButtonTheme(
+                minWidth: double.infinity,
+                height: 50.0,
+                child:RaisedButton(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30.0),
+                    side: BorderSide(width: 3, color: Colors.black.withOpacity(0.9),)),
+                color: Colors.white.withOpacity(0.0000000000001),
+              onPressed: () async {
+//                Prediction p = await PlacesAutocomplete.show(
+//                    context: context,
+//                    apiKey: kGoogleApiKey,
+//                    mode: Mode.overlay, // Mode.fullscreen
+//                    language: "ua",
+//                    components: [new Component(//Component.country, "uk",
+//                        Component.locality, "ua")]);
+//                displayPrediction(p);
+                Prediction p = await PlacesAutocomplete.show(
+                    //components: [new Component(Component.country, "uk",)],
+                  context: context, apiKey: kGoogleApiKey,
+                  mode: Mode.overlay
+                );
+                displayPrediction(p);
+                print(
+                    '////////////////////////////////////////////////////////////////////');
+                print(p);
+              },
+              child: ListTile(leading:Icon(CupertinoIcons.search, size:35.0, color: Color(0xff767F88))
+    ,title: Text(place),
+    trailing: Column(children:<Widget>[IconButton(icon: Icon(CupertinoIcons.clear, size:40.0,color: Color(0xff767F88)),
+    onPressed:(){place = 'Find address'; setState(() {
+              });}),SizedBox(height: 15,)])),
+            )),
+              right: 10.0,
+              left: 10.0,
+              top: 20.0,
+            )]),
 //            RaisedButton(
 //              onPressed: () async {
 ////                Prediction p = await PlacesAutocomplete.show(
