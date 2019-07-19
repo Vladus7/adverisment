@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:advertise/screens/regiter_screen.dart';
 import 'package:advertise/models/user_models.dart';
 import 'dart:async';
-import 'package:firebase_auth/firebase_auth.dart';
+//import 'package:firebase_auth/firebase_auth.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter_facebook_login/flutter_facebook_login.dart';

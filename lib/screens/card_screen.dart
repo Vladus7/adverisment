@@ -15,17 +15,21 @@ class _CardScreenState extends State<CardScreen> {
     showModalBottomSheet(
         context: context,
         builder: (BuildContext bc) {
-          return Container(
+          return Padding(
+          padding: EdgeInsets.only(
+          bottom: MediaQuery.of(context).viewInsets.bottom),
+          child:Container(
+              height: MediaQuery.of(context).size.height-480.0,
             decoration: BoxDecoration(
                 color: Color(0xff171918),
                 borderRadius: new BorderRadius.only(
-              topLeft:  const  Radius.circular(25.0),
-                topRight: const  Radius.circular(25.0))),
+              topLeft:  const  Radius.circular(5.0),
+                topRight: const  Radius.circular(5.0))),
             child: ListView(
               children: <Widget>[
                 new ListTile(
-                    title:  Text('Add new card', style: TextStyle(color: Color(0xfffafafa))),
-                  trailing: IconButton(icon: Icon(CupertinoIcons.clear, color: Color(0xfffafafa),), onPressed: (){
+                    title:  Text('Add new card', style: TextStyle(color: Color(0xfffafafa),fontSize: 20)),
+                  trailing: IconButton(icon: Icon(CupertinoIcons.clear, color: Color(0xfffafafa),size: 35,), onPressed: (){
                     Navigator.pop(context);
                     //Navigator.push(context,MaterialPageRoute(builder: (context) => CardScreen()));
                   }),
@@ -36,32 +40,43 @@ class _CardScreenState extends State<CardScreen> {
                     right: 10.0,
                   ),
                   child: Column( children: <Widget>[
-                Container(
-
-                    child: Theme(
-                      data: new ThemeData(
-                          primaryColor: Colors.teal,
-                          hintColor:  Color(0xff767F88)),
-                      child: TextField(
-                        decoration: InputDecoration(
-                            hintText: "Card number",
-                            fillColor: Color(0xff414141)
-                          //errorText: snapshot.error
+                    SizedBox(height: 20,),
+                  Container(
+                    child:
+                      Theme(
+                        data: new ThemeData(
+                            primaryColor: Color(0xff767F88),
+                            hintColor: Color(0xff767F88)),
+                    child: TextField(
+                      decoration: InputDecoration(
+                        filled: true,
+                        fillColor: Color(0xff171918),
+                        border: UnderlineInputBorder(
+                          borderRadius: BorderRadius.circular(15),//borderSide: BorderSide(color: Colors.red),
+                          //borderRadius: BorderRadius.circular(32)
                         ),
-                      ),
-                    )),
+                              hintText: "Card number",
+                          ),
+                        ),
+                      )),
+                SizedBox(height: 15,),
                 Container(child: Row(
                     children: <Widget>[
                     Container(
                     width: 180.0,
                     child: Theme(
                       data: new ThemeData(
-                          primaryColor: Colors.teal,
-                          hintColor:  Color(0xff767F88)),
+                          primaryColor: Color(0xff767F88),
+                          hintColor: Color(0xff767F88)),
                       child: TextField(
                         decoration: InputDecoration(
+                          filled: true,
+                          fillColor: Color(0xff171918),
+                          border: UnderlineInputBorder(
+                            borderRadius: BorderRadius.circular(15),//borderSide: BorderSide(color: Colors.red),
+                            //borderRadius: BorderRadius.circular(32)
+                          ),
                             hintText: "First Name",
-                            fillColor: Color(0xff414141)
                           //errorText: snapshot.error
                         ),
                       ),
@@ -69,25 +84,30 @@ class _CardScreenState extends State<CardScreen> {
                         width: 180.0,
                         child: Theme(
                           data: new ThemeData(
-                              primaryColor: Colors.teal,
-                              hintColor:  Color(0xff767F88)),
+                              primaryColor: Color(0xff767F88),
+                              hintColor: Color(0xff767F88)),
                           child: TextField(
                             decoration: InputDecoration(
+                              filled: true,
+                              fillColor: Color(0xff171918),
+                              border: UnderlineInputBorder(
+                                borderRadius: BorderRadius.circular(15),//borderSide: BorderSide(color: Colors.red),
+                                //borderRadius: BorderRadius.circular(32)
+                              ),
                                 hintText: "Last Name",
-                                fillColor: Color(0xff414141)
                               //errorText: snapshot.error
                             ),
                           ),
                         ))]),
                 ),
-                SizedBox(height: 20,),
+                SizedBox(height: 25,),
                 Text('By continuing, you age to the Teams of services' ,style: TextStyle(
           color: Color(0xff767F88)),
           ),
-                SizedBox(height: 20,),
+                SizedBox(height: 30,),
                 ButtonTheme(
                     minWidth: double.infinity,
-                    height: 40.0,
+                    height: 48.0,
                     child: RaisedButton(
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30.0),
@@ -103,15 +123,21 @@ class _CardScreenState extends State<CardScreen> {
                       ),
                     )),],
             ),
-          )]));
+          )])));
         }
     );
   }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
+      resizeToAvoidBottomPadding: true,
       key: _scaffoldKey,
       appBar: AppBar(
+        leading: new IconButton(
+          icon: new Icon(CupertinoIcons.left_chevron, color: Color(0xfffafafa)),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
         title:
         Text('Card', style: TextStyle(color: Color(0xfffafafa))),
         backgroundColor: Color(0xff1d2120),
@@ -120,7 +146,8 @@ class _CardScreenState extends State<CardScreen> {
           children: <Widget>[
             ListTile(
               leading: Image.asset(
-          'images/batmen.jpg',
+                'images/Mastercard-logo.jpg',
+                height: 18,
         ),
               title: Text('1234 1234 1234 1234',  style: TextStyle(color: Color(0xfffafafa)),),
               trailing: Icon(CupertinoIcons.delete, color: Color(0xfffafafa)),

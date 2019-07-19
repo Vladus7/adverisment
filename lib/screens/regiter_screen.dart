@@ -12,6 +12,7 @@ class RegisterFormState extends State<RegisterForm> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           backgroundColor: Color(0xff212121),
           title: Text('Edit information'),
           actions: <Widget>[
@@ -74,12 +75,16 @@ class RegisterFormState extends State<RegisterForm> {
                                         width: 250.0,
                                         child: Theme(
                                           data: new ThemeData(
-                                              primaryColor: Colors.teal,
+                                              primaryColor: Colors.white,
                                               hintColor: Colors.white),
                                           child: TextField(
                                             decoration: InputDecoration(
+                                                filled: true,
+                                                border: UnderlineInputBorder(
+                                                  borderRadius: BorderRadius.circular(15),//borderSide: BorderSide(color: Colors.red),
+                                                  //borderRadius: BorderRadius.circular(32)
+                                                ),
                                                 hintText: "First Name",
-                                                fillColor: Colors.white
                                                 //errorText: snapshot.error
                                                 ),
                                           ),
@@ -88,10 +93,15 @@ class RegisterFormState extends State<RegisterForm> {
                                         width: 250.0,
                                         child: Theme(
                                             data: new ThemeData(
-                                                primaryColor: Colors.teal,
+                                                primaryColor: Colors.white,
                                                 hintColor: Colors.white),
                                             child: TextField(
                                               decoration: InputDecoration(
+                                                filled: true,
+                                                border: UnderlineInputBorder(
+                                                  borderRadius: BorderRadius.circular(15),//borderSide: BorderSide(color: Colors.red),
+                                                  //borderRadius: BorderRadius.circular(32)
+                                                ),
                                                 hintText: "Last Name",
                                                 //errorText: snapshot.error
                                               ),
@@ -112,33 +122,45 @@ class RegisterFormState extends State<RegisterForm> {
                               ),
                               Theme(
                                   data: new ThemeData(
-                                      primaryColor: Colors.teal,
+                                      primaryColor: Colors.white,
                                       hintColor: Colors.white),
                                   child: TextField(
                                     decoration: InputDecoration(
+                                      filled: true,
+                                      border: UnderlineInputBorder(
+                                        borderRadius: BorderRadius.circular(15),//borderSide: BorderSide(color: Colors.red),
+                                        //borderRadius: BorderRadius.circular(32)
+                                      ),
                                       hintText: "Country",
-                                      filled: false,
                                       //errorText: snapshot.error
                                     ),
                                   )),
                               Theme(
                                   data: new ThemeData(
-                                      primaryColor: Colors.teal,
+                                      primaryColor: Colors.white,
                                       hintColor: Colors.white),
                                   child: TextField(
                                     decoration: InputDecoration(
-                                      filled: false,
+                                      filled: true,
+                                      border: UnderlineInputBorder(
+                                          borderRadius: BorderRadius.circular(15),//borderSide: BorderSide(color: Colors.red),
+                                          //borderRadius: BorderRadius.circular(32)
+                                      ),
                                       hintText: "City",
                                       //errorText: snapshot.error
                                     ),
                                   )),
                               Theme(
                                   data: new ThemeData(
-                                      primaryColor: Colors.teal,
+                                      primaryColor: Colors.white,
                                       hintColor: Colors.white),
                                   child: TextField(
                                     decoration: InputDecoration(
-                                      filled: false,
+                                      filled: true,
+                                      border: UnderlineInputBorder(
+                                        borderRadius: BorderRadius.circular(15),//borderSide: BorderSide(color: Colors.red),
+                                        //borderRadius: BorderRadius.circular(32)
+                                      ),
                                       hintText: "Email",
                                       //errorText: snapshot.error
                                     ),
@@ -186,12 +208,16 @@ class RegisterFormState extends State<RegisterForm> {
                                     width: 250.0,
                                     child: Theme(
                                       data: new ThemeData(
-                                          primaryColor: Colors.teal,
+                                          primaryColor: Colors.white,
                                           hintColor: Colors.white),
                                       child: TextField(
                                         decoration: InputDecoration(
+                                            filled: true,
+                                            border: UnderlineInputBorder(
+                                              borderRadius: BorderRadius.circular(15),//borderSide: BorderSide(color: Colors.red),
+                                              //borderRadius: BorderRadius.circular(32)
+                                            ),
                                             hintText: "Licence Numder",
-                                            fillColor: Colors.white
                                             //errorText: snapshot.error
                                             ),
                                       ),
@@ -200,10 +226,15 @@ class RegisterFormState extends State<RegisterForm> {
                                     width: 250.0,
                                     child: Theme(
                                         data: new ThemeData(
-                                            primaryColor: Colors.teal,
+                                            primaryColor: Colors.white,
                                             hintColor: Colors.white),
                                         child: TextField(
                                           decoration: InputDecoration(
+                                            filled: true,
+                                            border: UnderlineInputBorder(
+                                              borderRadius: BorderRadius.circular(15),//borderSide: BorderSide(color: Colors.red),
+                                              //borderRadius: BorderRadius.circular(32)
+                                            ),
                                             hintText: "License Country",
                                             //errorText: snapshot.error
                                           ),
@@ -258,33 +289,45 @@ class RegisterFormState extends State<RegisterForm> {
                           ),
                           Theme(
                               data: new ThemeData(
-                                  primaryColor: Colors.teal,
+                                  primaryColor: Colors.white,
                                   hintColor: Colors.white),
                               child: TextField(
                                 decoration: InputDecoration(
+                                  filled: true,
+                                  border: UnderlineInputBorder(
+                                    borderRadius: BorderRadius.circular(15),//borderSide: BorderSide(color: Colors.red),
+                                    //borderRadius: BorderRadius.circular(32)
+                                  ),
                                   hintText: "Car brand",
-                                  filled: false,
                                   //errorText: snapshot.error
                                 ),
                               )),
                           Theme(
                               data: new ThemeData(
-                                  primaryColor: Colors.teal,
+                                  primaryColor: Colors.white,
                                   hintColor: Colors.white),
                               child: TextField(
                                 decoration: InputDecoration(
-                                  filled: false,
+                                  filled: true,
+                                  border: UnderlineInputBorder(
+                                    borderRadius: BorderRadius.circular(15),//borderSide: BorderSide(color: Colors.red),
+                                    //borderRadius: BorderRadius.circular(32)
+                                  ),
                                   hintText: "Car model",
                                   //errorText: snapshot.error
                                 ),
                               )),
                           Theme(
                               data: new ThemeData(
-                                  primaryColor: Colors.teal,
+                                  primaryColor: Colors.white,
                                   hintColor: Colors.white),
                               child: TextField(
                                 decoration: InputDecoration(
-                                  filled: false,
+                                  filled: true,
+                                  border: UnderlineInputBorder(
+                                    borderRadius: BorderRadius.circular(15),//borderSide: BorderSide(color: Colors.red),
+                                    //borderRadius: BorderRadius.circular(32)
+                                  ),
                                   hintText: "Car number",
                                   //errorText: snapshot.error
                                 ),

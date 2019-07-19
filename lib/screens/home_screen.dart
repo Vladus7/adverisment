@@ -8,7 +8,6 @@ import 'package:advertise/screens/finances.dart';
 import 'package:advertise/screens/tasks_screen.dart';
 import 'package:advertise/screens/account_screen.dart';
 import 'package:flutter_google_places/flutter_google_places.dart';
-import 'package:geocoder/geocoder.dart';
 import 'package:location/location.dart' as loc;
 import 'package:google_maps_webservice/places.dart';
 
@@ -27,45 +26,29 @@ class MapSampleState extends State<MapSample> {
   final Set<Marker> _markers = {};
   var _center = const LatLng(45.521563, -122.677433);
   Completer<GoogleMapController> _controller = Completer();
-
+  String place = 'Поиск';
 
   var currentLocation;
-//  _getLocation() async{
-//    var location = new loc.Location();
-//    try {
-//      currentLocation = await location.getLocation();
-//    } on Exception {//catch (e) {
-////      if (e.code == 'PERMISSION_DENIED') {
-////        error = 'Permission denied';
-////      }
-//      currentLocation = null;
-//    }
-//  }
-String place = 'London';
-  void _onAddMarkerButtonPressed() async{
+
+  void _onAddMarkerButtonPressed() async {
     var location = new loc.Location();
     try {
       currentLocation = await location.getLocation();
-      //_center = currentLocation;
-      //print(currentLocation.latitude, currentLocation.longitude);
       _center = LatLng(currentLocation.latitude, currentLocation.longitude);
       setState(() {
         _markers.add(Marker(
-          // This marker id can be anything that uniquely identifies each marker.
-          markerId: MarkerId(LatLng(currentLocation.latitude, currentLocation.longitude).toString()),
+          markerId: MarkerId(
+              LatLng(currentLocation.latitude, currentLocation.longitude)
+                  .toString()),
           position: LatLng(currentLocation.latitude, currentLocation.longitude),
           infoWindow: InfoWindow(
             title: 'Your locate',
-            //snippet: '5 Star Rating',
           ),
-          
-          icon: BitmapDescriptor.fromAsset("images/google-map-pointer-grey-th.png"),
+          icon: BitmapDescriptor.fromAsset(
+              "images/google-map-pointer-grey-th.png"),
         ));
       });
-    } on Exception {//catch (e) {
-//      if (e.code == 'PERMISSION_DENIED') {
-//        error = 'Permission denied';
-//      }
+    } on Exception {
       currentLocation = null;
     }
   }
@@ -89,217 +72,215 @@ String place = 'London';
     bs1Attr = BSAttribute();
   }
 
+
+
   @override
   Widget build(BuildContext context) {
     return
 //      Stack(
 //        children: <Widget>[
-          Scaffold(
+        Scaffold(
 //      key: _scaffoldKey,
       bottomSheet: BottomSheetStateful(
-          attribute: (bs1Attr = BSAttribute(
-              bodyWidget: Container(
-                  child:
-                      Column(mainAxisSize: MainAxisSize.min, children: <Widget>[
-                Container(
-                  width: 35,
-                  margin: EdgeInsets.all(8.0),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(1),
-                      border: Border.all(width: 1.5, color: Color(0xfffafafa)),
-                      color: Color(0xfffafafa)),
+        attribute: (bs1Attr = BSAttribute(
+            bodyWidget: Container(
+                child:
+                    Column(mainAxisSize: MainAxisSize.min, children: <Widget>[
+              Container(
+                width: 35,
+                margin: EdgeInsets.all(8.0),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(1),
+                    border: Border.all(width: 1.5, color: Color(0xfffafafa)),
+                    color: Color(0xfffafafa)),
+              ),
+              Row(children: <Widget>[
+                SizedBox(
+                  width: 15,
                 ),
-                Row(children: <Widget>[
-                  SizedBox(
-                    width: 15,
-                  ),
-                  ButtonTheme(
-                      minWidth: 90.0,
-                      height: 36.0,
-                      child: RaisedButton(
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30.0),
-                            side:
-                                BorderSide(width: 1, color: Color(0xff31803f))),
-                        color: Color(0xff31803f),
-                        onPressed: () {},
-                        child: Text(
-                          'START',
-                          style: TextStyle(
-                            color: Color(0xfffafafa),
-                            fontSize: 15,
-                          ),
+                ButtonTheme(
+                    minWidth: 90.0,
+                    height: 36.0,
+                    child: RaisedButton(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30.0),
+                          side: BorderSide(width: 1, color: Color(0xff31803f))),
+                      color: Color(0xff31803f),
+                      onPressed: () {},
+                      child: Text(
+                        'START',
+                        style: TextStyle(
+                          color: Color(0xfffafafa),
+                          fontSize: 15,
                         ),
-                      )),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Text('take the campaign and start',
-                      style: TextStyle(
-                        color: Color(0xfffafafa),
-                      )),
-                ]),
-                ListTile(
-                  leading: Icon(
-                    CupertinoIcons.person,
-                    color: Color(0xfffafafa),
-                  ),
-                  title: Text('Account info',
-                      style: TextStyle(
-                        color: Color(0xfffafafa),
-                      )),
-                  subtitle: Text('Manage your personal information',
-                      style: TextStyle(
-                        color: Color(0xff767F88),
-                      )),
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => AccountScreen()));
-                  },
-                ),
-                ListTile(
-                  leading: Icon(
-                    CupertinoIcons.check_mark_circled_solid,
-                    color: Color(0xfffafafa),
-                  ),
-                  title: Text('Task',
-                      style: TextStyle(
-                        color: Color(0xfffafafa),
-                      )),
-                  subtitle: Text('See availiable tasks for you',
-                      style: TextStyle(
-                        color: Color(0xff767F88),
-                      )),
-                  onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => TasksScreen()));
-                  },
-                ),
-                ListTile(
-                  leading: Icon(
-                    Icons.equalizer,
-                    color: Color(0xfffafafa),
-                  ),
-                  title: Text('Finances',
-                      style: TextStyle(
-                        color: Color(0xfffafafa),
-                      )),
-                  subtitle: Text('Manage your payment information',
-                      style: TextStyle(
-                        color: Color(0xff767F88),
-                      )),
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => FinancesScreen()));
-                  },
-                ),
-                ListTile(
-                  leading: Icon(
-                    CupertinoIcons.mail,
-                    color: Color(0xfffafafa),
-                  ),
-                  title: Text('Notification',
-                      style: TextStyle(
-                        color: Color(0xfffafafa),
-                      )),
-                  subtitle: Text('All your notification',
-                      style: TextStyle(
-                        color: Color(0xff767F88),
-                      )),
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => NotificationScreen()));
-                  },
-                ),
-                ListTile(
-                  leading: Icon(
-                    CupertinoIcons.info,
-                    color: Color(0xfffafafa),
-                  ),
-                  title: Text('About us',
-                      style: TextStyle(
-                        color: Color(0xfffafafa),
-                      )
-                      // onTap: () => ...,
                       ),
-                  subtitle: Text('Terms of use, Confidentiality, etc.',
-                      style: TextStyle(
-                        color: Color(0xff767F88),
-                      )),
-                )
-              ])),
-              peekHeight: 100,
-              maxHeight: 450,
-              decoration: BoxDecoration(
-                  color: Colors.black.withOpacity(0.9),
-                  borderRadius: BorderRadius.only(
-                      topLeft: const Radius.circular(15.0),
-                      topRight: const Radius.circular(15.0))),
-              headWidget:
-                  Column(mainAxisSize: MainAxisSize.min, children: <Widget>[
-                Container(
-                  width: 35,
-                  margin: EdgeInsets.all(8.0),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(1),
-                      border: Border.all(width: 1.5, color: Color(0xfffafafa)),
-                      color: Color(0xfffafafa)),
+                    )),
+                SizedBox(
+                  width: 10,
                 ),
-                Row(children: <Widget>[
-                  SizedBox(
-                    width: 15,
-                  ),
-                  ButtonTheme(
-                      minWidth: 90.0,
-                      height: 36.0,
-                      child: RaisedButton(
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30.0),
-                            side:
-                                BorderSide(width: 1, color: Color(0xff31803f))),
-                        color: Color(0xff31803f),
-                        onPressed: () {},
-                        child: Text(
-                          'START',
-                          style: TextStyle(
-                            color: Color(0xfffafafa),
-                            fontSize: 15,
-                          ),
-                        ),
-                      )),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Text('take the campaign and start',
-                      style: TextStyle(
-                        color: Color(0xfffafafa),
-                      )),
-                ]),
+                Text('take the campaign and start',
+                    style: TextStyle(
+                      color: Color(0xfffafafa),
+                    )),
               ]),
-              closeOnSwipeDown: false,
-              showHead: true)),
-          body: Stack(children: <Widget>[
-            Container(
-              child: GoogleMap(
-                markers: _markers,
-                mapType: MapType.normal,
-                //myLocationEnabled: true,
-                //myLocationButtonEnabled: true,
-                initialCameraPosition:CameraPosition(
-                  target: _center,
-                  zoom: 20.0,
+              ListTile(
+                leading: Icon(
+                  CupertinoIcons.person,
+                  color: Color(0xfffafafa),
                 ),
-                onMapCreated: (GoogleMapController controller) {
-                  _controller.complete(controller);
+                title: Text('Account info',
+                    style: TextStyle(
+                      color: Color(0xfffafafa),
+                    )),
+                subtitle: Text('Manage your personal information',
+                    style: TextStyle(
+                      color: Color(0xff767F88),
+                    )),
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => AccountScreen()));
                 },
               ),
+              ListTile(
+                leading: Icon(
+                  CupertinoIcons.check_mark_circled_solid,
+                  color: Color(0xfffafafa),
+                ),
+                title: Text('Task',
+                    style: TextStyle(
+                      color: Color(0xfffafafa),
+                    )),
+                subtitle: Text('See availiable tasks for you',
+                    style: TextStyle(
+                      color: Color(0xff767F88),
+                    )),
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => TasksScreen()));
+                },
+              ),
+              ListTile(
+                leading: Icon(
+                  Icons.equalizer,
+                  color: Color(0xfffafafa),
+                ),
+                title: Text('Finances',
+                    style: TextStyle(
+                      color: Color(0xfffafafa),
+                    )),
+                subtitle: Text('Manage your payment information',
+                    style: TextStyle(
+                      color: Color(0xff767F88),
+                    )),
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => FinancesScreen()));
+                },
+              ),
+              ListTile(
+                leading: Icon(
+                  CupertinoIcons.mail,
+                  color: Color(0xfffafafa),
+                ),
+                title: Text('Notification',
+                    style: TextStyle(
+                      color: Color(0xfffafafa),
+                    )),
+                subtitle: Text('All your notification',
+                    style: TextStyle(
+                      color: Color(0xff767F88),
+                    )),
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => NotificationScreen()));
+                },
+              ),
+              ListTile(
+                leading: Icon(
+                  CupertinoIcons.info,
+                  color: Color(0xfffafafa),
+                ),
+                title: Text('About us',
+                    style: TextStyle(
+                      color: Color(0xfffafafa),
+                    )
+                    // onTap: () => ...,
+                    ),
+                subtitle: Text('Terms of use, Confidentiality, etc.',
+                    style: TextStyle(
+                      color: Color(0xff767F88),
+                    )),
+              )
+            ])),
+            peekHeight: 100,
+            maxHeight: 450,
+            decoration: BoxDecoration(
+                color: Colors.black.withOpacity(0.9),
+                borderRadius: BorderRadius.only(
+                    topLeft: const Radius.circular(15.0),
+                    topRight: const Radius.circular(15.0))),
+            headWidget:
+                Column(mainAxisSize: MainAxisSize.min, children: <Widget>[
+              Container(
+                width: 35,
+                margin: EdgeInsets.all(8.0),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(1),
+                    border: Border.all(width: 1.5, color: Color(0xfffafafa)),
+                    color: Color(0xfffafafa)),
+              ),
+              Row(children: <Widget>[
+                SizedBox(
+                  width: 15,
+                ),
+                ButtonTheme(
+                    minWidth: 90.0,
+                    height: 36.0,
+                    child: RaisedButton(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30.0),
+                          side: BorderSide(width: 1, color: Color(0xff31803f))),
+                      color: Color(0xff31803f),
+                      onPressed: () {},
+                      child: Text(
+                        'START',
+                        style: TextStyle(
+                          color: Color(0xfffafafa),
+                          fontSize: 15,
+                        ),
+                      ),
+                    )),
+                SizedBox(
+                  width: 10,
+                ),
+                Text('take the campaign and start',
+                    style: TextStyle(
+                      color: Color(0xfffafafa),
+                    )),
+              ]),
+            ]),
+            closeOnSwipeDown: false,
+            showHead: true)),
+        body: Stack(children: <Widget>[
+          Container(
+            child: GoogleMap(
+              markers: _markers,
+              mapType: MapType.normal,
+              //myLocationEnabled: true,
+              //myLocationButtonEnabled: true,
+              initialCameraPosition: CameraPosition(
+                target: _center,
+                zoom: 20.0,
+              ),
+              onMapCreated: (GoogleMapController controller) {
+                _controller.complete(controller);
+              },
             ),
+          ),
           Positioned(
             child: new FloatingActionButton(
               child: Icon(
@@ -314,16 +295,19 @@ String place = 'London';
             right: 10.0,
             top: 600.0,
           ),
-            Positioned(
-              child: ButtonTheme(
+          Positioned(
+            child: ButtonTheme(
                 minWidth: double.infinity,
-                height: 50.0,
-                child:RaisedButton(
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30.0),
-                    side: BorderSide(width: 3, color: Colors.black.withOpacity(0.9),)),
-                color: Colors.white.withOpacity(0.0000000000001),
-              onPressed: () async {
+                height: 10.0,
+                child: RaisedButton(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30.0),
+                      side: BorderSide(
+                        width: 2,
+                        color: Colors.black.withOpacity(0.9),
+                      )),
+                  color: Colors.white.withOpacity(0.0000000000001),
+                  onPressed: () async {
 //                Prediction p = await PlacesAutocomplete.show(
 //                    context: context,
 //                    apiKey: kGoogleApiKey,
@@ -332,26 +316,37 @@ String place = 'London';
 //                    components: [new Component(//Component.country, "uk",
 //                        Component.locality, "ua")]);
 //                displayPrediction(p);
-                Prediction p = await PlacesAutocomplete.show(
-                    //components: [new Component(Component.country, "uk",)],
-                  context: context, apiKey: kGoogleApiKey,
-                  mode: Mode.overlay
-                );
-                displayPrediction(p);
-                print(
-                    '////////////////////////////////////////////////////////////////////');
-                print(p);
-              },
-              child: ListTile(leading:Icon(CupertinoIcons.search, size:35.0, color: Color(0xff767F88))
-    ,title: Text(place),
-    trailing: Column(children:<Widget>[IconButton(icon: Icon(CupertinoIcons.clear, size:40.0,color: Color(0xff767F88)),
-    onPressed:(){place = 'Find address'; setState(() {
-              });}),SizedBox(height: 15,)])),
-            )),
-              right: 10.0,
-              left: 10.0,
-              top: 20.0,
-            )]),
+                    Prediction p = await PlacesAutocomplete.show(
+                        //components: [new Component(Component.country, "uk",)],
+                        context: context,
+                        apiKey: kGoogleApiKey,
+                        mode: Mode.overlay);
+                    displayPrediction(p);
+                  },
+                  child: Container(
+                    height: 48,
+                      child: Row(
+                        children: <Widget>[
+                      IconButton(
+                      icon:Icon(CupertinoIcons.search,
+                          size: 25.0, color: Color(0xff767F88))),
+                       SizedBox(width: 20,),
+                       Text(place, style: TextStyle(color: Color(0xff767F88),fontSize: 20),),
+SizedBox(width: 175,),
+//                        IconButton(
+//                            icon: Icon(CupertinoIcons.clear,
+//                                size: 35.0, color: Color(0xff767F88)),
+//                            onPressed: () {
+//                              place = 'Find address';
+//                              setState(() {});
+//                            }),
+                        ])),
+                )),
+            right: 10.0,
+            left: 10.0,
+            top: 20.0,
+          )
+        ]),
 //            RaisedButton(
 //              onPressed: () async {
 ////                Prediction p = await PlacesAutocomplete.show(
@@ -375,7 +370,7 @@ String place = 'London';
 //              child: Text('Find address'),
 //            )
 //          ])
-    ),
+      ),
 //      appBar: AppBar(
 //        title: Text('Map',style: TextStyle(color: Color(0xfffafafa))),
 //    backgroundColor: Color(0xff1d2120),
@@ -400,22 +395,26 @@ String place = 'London';
 //      ),
     );
   }
+
   Future displayPrediction(Prediction p) async {
     if (p != null) {
       print(p);
       PlacesDetailsResponse detail =
-      await _places.getDetailsByPlaceId(p.placeId);
+          await _places.getDetailsByPlaceId(p.placeId);
 
       var placeId = p.placeId;
+      String name = detail.result.name;
       double lat = detail.result.geometry.location.lat;
       double lng = detail.result.geometry.location.lng;
 
-      var address = await Geocoder.local.findAddressesFromQuery(p.description);
+      // var address = await Geocoder.local.findAddressesFromQuery(p.description);
 
-
+      print(name);
       print(lat);
       print(lng);
-    }}
+    }
+  }
+
   Future<void> _goToTheLake() async {
     final GoogleMapController controller = await _controller.future;
     controller.animateCamera(CameraUpdate.newCameraPosition(_kLake));

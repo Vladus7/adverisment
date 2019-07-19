@@ -14,6 +14,10 @@ class _TasksScreenState extends State<TasksScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: new IconButton(
+          icon: new Icon(CupertinoIcons.left_chevron, color: Color(0xfffafafa)),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
         title:
         Text('Tasks', style: TextStyle(color: Color(0xfffafafa))),
         backgroundColor: Color(0xff1d2120),
@@ -31,8 +35,9 @@ class _TasksScreenState extends State<TasksScreen> {
                     alignment: Alignment.centerLeft,
                     child: Text(
                       'First campign',
-                      style: TextStyle(color: Color(0xfffafafa), fontSize: 20),
+                      style: TextStyle(color: Color(0xfffafafa), fontSize: 23),
                     )),
+                SizedBox(height: 5,),
                 Align(
                     alignment: Alignment.centerLeft,
                     child: Text(
@@ -55,21 +60,21 @@ class _TasksScreenState extends State<TasksScreen> {
                 ),
                 Row(
                   children: <Widget>[
-                    SizedBox(width: 35,),
+                    SizedBox(width: 70,),
                     Column(children: <Widget>[ Text(
                       '100',
                       style: TextStyle(color: Color(0xfffafafa), fontSize: 20),
                     ),
                     Text(
                       'Need Km',
-                      style: TextStyle(color: Color(0xfffafafa)),
+                      style: TextStyle(color: Color(0xfffafafa), fontSize: 11),
                     )]),SizedBox(width: 150,),Column(children: <Widget>[ Text(
                       '1',
                       style: TextStyle(color: Color(0xfffafafa), fontSize: 20),
                     ),
                     Text(
                       'PLN/Km',
-                      style: TextStyle(color: Color(0xfffafafa)),
+                      style: TextStyle(color: Color(0xfffafafa), fontSize: 11),
                     ),])
                   ],
                 ),
@@ -84,10 +89,10 @@ class _TasksScreenState extends State<TasksScreen> {
                       color: Color(0xff31803f),
                       onPressed: () {},
                       child: Text(
-                        'More',
+                        'MORE',
                         style: TextStyle(
                           color: Color(0xfffafafa),
-                          fontSize: 15,
+                          fontSize: 16,
                         ),
                       ),
                     )),
@@ -106,8 +111,9 @@ class _TasksScreenState extends State<TasksScreen> {
                       alignment: Alignment.centerLeft,
                       child: Text(
                         'First campign',
-                        style: TextStyle(color: Color(0xfffafafa), fontSize: 20),
+                        style: TextStyle(color: Color(0xfffafafa), fontSize: 23),
                       )),
+                  SizedBox(height: 5,),
                   Align(
                       alignment: Alignment.centerLeft,
                       child: Text(
@@ -130,21 +136,21 @@ class _TasksScreenState extends State<TasksScreen> {
                   ),
                   Row(
                     children: <Widget>[
-                      SizedBox(width: 35,),
+                      SizedBox(width: 70,),
                       Column(children: <Widget>[ Text(
                         '100',
                         style: TextStyle(color: Color(0xfffafafa), fontSize: 20),
                       ),
                       Text(
                         'Need Km',
-                        style: TextStyle(color: Color(0xfffafafa)),
+                        style: TextStyle(color: Color(0xfffafafa), fontSize: 11),
                       )]),SizedBox(width: 150,),Column(children: <Widget>[ Text(
                         '1',
                         style: TextStyle(color: Color(0xfffafafa), fontSize: 20),
                       ),
                       Text(
                         'PLN/Km',
-                        style: TextStyle(color: Color(0xfffafafa)),
+                        style: TextStyle(color: Color(0xfffafafa), fontSize: 11),
                       ),])
                     ],
                   ),
@@ -159,10 +165,10 @@ class _TasksScreenState extends State<TasksScreen> {
                         color: Color(0xff31803f),
                         onPressed: () {},
                         child: Text(
-                          'More',
+                          'MORE',
                           style: TextStyle(
                             color: Color(0xfffafafa),
-                            fontSize: 15,
+                            fontSize: 16,
                           ),
                         ),
                       )),
