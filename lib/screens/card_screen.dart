@@ -45,9 +45,11 @@ class _CardScreenState extends State<CardScreen> {
                     child:
                       Theme(
                         data: new ThemeData(
-                            primaryColor: Color(0xff767F88),
+                            cursorColor: Color(0xff31803f),
+                            primaryColor: Color(0xff31803f),
                             hintColor: Color(0xff767F88)),
-                    child: TextField(
+                        child: TextField(
+                          style: new TextStyle(color: Colors.white),
                       decoration: InputDecoration(
                         filled: true,
                         fillColor: Color(0xff171918),
@@ -66,9 +68,11 @@ class _CardScreenState extends State<CardScreen> {
                     width: 180.0,
                     child: Theme(
                       data: new ThemeData(
-                          primaryColor: Color(0xff767F88),
+                          cursorColor: Color(0xff31803f),
+                          primaryColor: Color(0xff31803f),
                           hintColor: Color(0xff767F88)),
                       child: TextField(
+                        style: new TextStyle(color: Colors.white),
                         decoration: InputDecoration(
                           filled: true,
                           fillColor: Color(0xff171918),
@@ -84,9 +88,11 @@ class _CardScreenState extends State<CardScreen> {
                         width: 180.0,
                         child: Theme(
                           data: new ThemeData(
-                              primaryColor: Color(0xff767F88),
+                              cursorColor: Color(0xff31803f),
+                              primaryColor: Color(0xff31803f),
                               hintColor: Color(0xff767F88)),
                           child: TextField(
+                            style: new TextStyle(color: Colors.white),
                             decoration: InputDecoration(
                               filled: true,
                               fillColor: Color(0xff171918),

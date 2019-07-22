@@ -75,17 +75,19 @@ class RegisterFormState extends State<RegisterForm> {
                                         width: 250.0,
                                         child: Theme(
                                           data: new ThemeData(
-                                              primaryColor: Colors.white,
+                                            cursorColor: Color(0xff31803f),
+                                              primaryColor: Color(0xff31803f),
                                               hintColor: Colors.white),
                                           child: TextField(
+                                            style: new TextStyle(color: Colors.white),
                                             decoration: InputDecoration(
-                                                filled: true,
+                                              filled: true,
                                                 border: UnderlineInputBorder(
-                                                  borderRadius: BorderRadius.circular(15),//borderSide: BorderSide(color: Colors.red),
+                                                  borderRadius: BorderRadius.circular(10),//borderSide: BorderSide(color: Colors.red),
                                                   //borderRadius: BorderRadius.circular(32)
                                                 ),
                                                 hintText: "First Name",
-                                                //errorText: snapshot.error
+//                                                //errorText: snapshot.error
                                                 ),
                                           ),
                                         )),
@@ -93,9 +95,11 @@ class RegisterFormState extends State<RegisterForm> {
                                         width: 250.0,
                                         child: Theme(
                                             data: new ThemeData(
-                                                primaryColor: Colors.white,
+                                                cursorColor: Color(0xff31803f),
+                                                primaryColor: Color(0xff31803f),
                                                 hintColor: Colors.white),
                                             child: TextField(
+                                              style: new TextStyle(color: Colors.white),
                                               decoration: InputDecoration(
                                                 filled: true,
                                                 border: UnderlineInputBorder(
@@ -122,9 +126,11 @@ class RegisterFormState extends State<RegisterForm> {
                               ),
                               Theme(
                                   data: new ThemeData(
-                                      primaryColor: Colors.white,
+                                      cursorColor: Color(0xff31803f),
+                                      primaryColor: Color(0xff31803f),
                                       hintColor: Colors.white),
                                   child: TextField(
+                                    style: new TextStyle(color: Colors.white),
                                     decoration: InputDecoration(
                                       filled: true,
                                       border: UnderlineInputBorder(
@@ -137,9 +143,11 @@ class RegisterFormState extends State<RegisterForm> {
                                   )),
                               Theme(
                                   data: new ThemeData(
-                                      primaryColor: Colors.white,
+                                      cursorColor: Color(0xff31803f),
+                                      primaryColor: Color(0xff31803f),
                                       hintColor: Colors.white),
                                   child: TextField(
+                                    style: new TextStyle(color: Colors.white),
                                     decoration: InputDecoration(
                                       filled: true,
                                       border: UnderlineInputBorder(
@@ -152,9 +160,11 @@ class RegisterFormState extends State<RegisterForm> {
                                   )),
                               Theme(
                                   data: new ThemeData(
-                                      primaryColor: Colors.white,
+                                      cursorColor: Color(0xff31803f),
+                                      primaryColor: Color(0xff31803f),
                                       hintColor: Colors.white),
                                   child: TextField(
+                                    style: new TextStyle(color: Colors.white),
                                     decoration: InputDecoration(
                                       filled: true,
                                       border: UnderlineInputBorder(
@@ -208,9 +218,11 @@ class RegisterFormState extends State<RegisterForm> {
                                     width: 250.0,
                                     child: Theme(
                                       data: new ThemeData(
-                                          primaryColor: Colors.white,
+                                          cursorColor: Color(0xff31803f),
+                                          primaryColor: Color(0xff31803f),
                                           hintColor: Colors.white),
                                       child: TextField(
+                                        style: new TextStyle(color: Colors.white),
                                         decoration: InputDecoration(
                                             filled: true,
                                             border: UnderlineInputBorder(
@@ -226,9 +238,11 @@ class RegisterFormState extends State<RegisterForm> {
                                     width: 250.0,
                                     child: Theme(
                                         data: new ThemeData(
-                                            primaryColor: Colors.white,
+                                            cursorColor: Color(0xff31803f),
+                                            primaryColor: Color(0xff31803f),
                                             hintColor: Colors.white),
                                         child: TextField(
+                                          style: new TextStyle(color: Colors.white),
                                           decoration: InputDecoration(
                                             filled: true,
                                             border: UnderlineInputBorder(
@@ -289,9 +303,11 @@ class RegisterFormState extends State<RegisterForm> {
                           ),
                           Theme(
                               data: new ThemeData(
-                                  primaryColor: Colors.white,
+                                  cursorColor: Color(0xff31803f),
+                                  primaryColor: Color(0xff31803f),
                                   hintColor: Colors.white),
                               child: TextField(
+                                style: new TextStyle(color: Colors.white),
                                 decoration: InputDecoration(
                                   filled: true,
                                   border: UnderlineInputBorder(
@@ -304,9 +320,11 @@ class RegisterFormState extends State<RegisterForm> {
                               )),
                           Theme(
                               data: new ThemeData(
-                                  primaryColor: Colors.white,
+                                  cursorColor: Color(0xff31803f),
+                                  primaryColor: Color(0xff31803f),
                                   hintColor: Colors.white),
                               child: TextField(
+                                style: new TextStyle(color: Colors.white),
                                 decoration: InputDecoration(
                                   filled: true,
                                   border: UnderlineInputBorder(
@@ -319,9 +337,11 @@ class RegisterFormState extends State<RegisterForm> {
                               )),
                           Theme(
                               data: new ThemeData(
-                                  primaryColor: Colors.white,
+                                  cursorColor: Color(0xff31803f),
+                                  primaryColor: Color(0xff31803f),
                                   hintColor: Colors.white),
                               child: TextField(
+                                style: new TextStyle(color: Colors.white),
                                 decoration: InputDecoration(
                                   filled: true,
                                   border: UnderlineInputBorder(

@@ -216,7 +216,7 @@ class MapSampleState extends State<MapSample> {
                     )),
               )
             ])),
-            peekHeight: 100,
+            peekHeight: 80,
             maxHeight: 450,
             decoration: BoxDecoration(
                 color: Colors.black.withOpacity(0.9),
@@ -293,7 +293,7 @@ class MapSampleState extends State<MapSample> {
               },
             ),
             right: 10.0,
-            top: 600.0,
+            top: 640.0,
           ),
           Positioned(
             child: ButtonTheme(
@@ -306,7 +306,7 @@ class MapSampleState extends State<MapSample> {
                         width: 2,
                         color: Colors.black.withOpacity(0.9),
                       )),
-                  color: Colors.white.withOpacity(0.0000000000001),
+                  color: Colors.white.withOpacity(0.01),
                   onPressed: () async {
 //                Prediction p = await PlacesAutocomplete.show(
 //                    context: context,
@@ -330,7 +330,7 @@ class MapSampleState extends State<MapSample> {
                       IconButton(
                       icon:Icon(CupertinoIcons.search,
                           size: 25.0, color: Color(0xff767F88))),
-                       SizedBox(width: 20,),
+                       SizedBox(width: 30,),
                        Text(place, style: TextStyle(color: Color(0xff767F88),fontSize: 20),),
 SizedBox(width: 175,),
 //                        IconButton(

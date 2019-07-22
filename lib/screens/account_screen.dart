@@ -45,12 +45,13 @@ class AccountScreenState extends State<AccountScreen> {
                 expandedHeight: 156.0,////////////////
                 pinned: true,
                 flexibleSpace: new FlexibleSpaceBar(
-                  centerTitle: true,
+                  //centerTitle: true,
                   title: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: <Widget>[
                       const Text("But Vlad",
                           style: TextStyle(color: Color(0xfffafafa))),
+SizedBox(height: 5,),
 //                      const Text("Poland, qwer",
 //                          style: TextStyle(
 //                              color: Color(0xfffafafa),
@@ -65,13 +66,13 @@ class AccountScreenState extends State<AccountScreen> {
                   )),
                     Padding(
                         padding: EdgeInsets.only(
-                            top:162, left: 161
+                            top:156, left: 65
                         ),
                         child:
                   Text("Poland, qwer",
                       style: TextStyle(
                           color: Color(0xfffafafa),
-                          fontSize: 10.0)))
+                          fontSize: 12.0)))
                   ])
                 ),
               ),
@@ -109,7 +110,7 @@ class AccountScreenState extends State<AccountScreen> {
                                             ListTile(
                                               leading: Image.asset(
                                                 'images/NMR.png',
-                                                width: 30,
+                                                width: 20,
                                                 //  fit: BoxFit.cover,
                                               ),
                                               title: Text('12345678',
@@ -349,7 +350,7 @@ class AccountScreenState extends State<AccountScreen> {
                                                               color: Color(0xff767F88),
                                                             ))),
                                                     SizedBox(
-                                                      height: 30,
+                                                      height: 35,
                                                     ),
                                                     Divider(
                                                       height: 2.0,
@@ -418,7 +419,7 @@ class AccountScreenState extends State<AccountScreen> {
                                                       ),
                                                     ),
                                                     SizedBox(
-                                                      height: 30,
+                                                      height: 25,
                                                     ),
                                                     ButtonTheme(
                                                         minWidth: double.infinity,
@@ -464,7 +465,7 @@ class AccountScreenState extends State<AccountScreen> {
                                         child: Column(
                                           children: <Widget>[
                                             SizedBox(
-                                              height: 20,
+                                              height: 30,
                                             ),
                                             Row(
                                               children: <Widget>[
@@ -521,6 +522,7 @@ class AccountScreenState extends State<AccountScreen> {
                                             ),
                                           ],
                                         )),
+                                    SizedBox(height: 20,)
                                   ]))))),
             ],
           ),

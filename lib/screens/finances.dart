@@ -45,9 +45,11 @@ class _FinancesScreenState extends State<FinancesScreen> {
                         Container(
                             child: Theme(
                               data: new ThemeData(
-                                  primaryColor: Colors.white,
-                                  hintColor: Colors.white),
+                                  cursorColor: Color(0xff31803f),
+                                  primaryColor: Color(0xff31803f),
+                                  hintColor: Color(0xff767F88)),
                               child: TextField(
+                                style: new TextStyle(color: Colors.white),
                                 decoration: InputDecoration(
                                   filled: true, fillColor: Color(0xff171918),
                                   border: UnderlineInputBorder(
@@ -160,7 +162,7 @@ Text('Balance',
 //                  ),
                   ButtonTheme(
                       minWidth: 200.0,
-                      height: 48.0,
+                      height: 50.0,
                       child: RaisedButton(
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(30.0),
@@ -187,7 +189,7 @@ Text('Balance',
           Container(
             margin: EdgeInsets.only(left: 10.0, right: 10.0),
             child: Column(mainAxisSize: MainAxisSize.min, children: <Widget>[
-              SizedBox(height: 20,),
+              SizedBox(height: 25,),
               Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
@@ -201,7 +203,7 @@ Text('Balance',
                     style: TextStyle(color: Color(0xfffafafa), fontSize: 20),
                   )),
               SizedBox(
-                height: 20,
+                height: 25,
               ),
               Row(
                 children: <Widget>[
@@ -213,16 +215,18 @@ Text('Balance',
                   Text('Claimed',
                             style: TextStyle(
                               color: Color(0xff767F88),
+                              fontSize: 15
                             )),SizedBox(width: 55,)]),//),
                     Align(
                         alignment: Alignment.bottomLeft,
                         child: Text('2019.05.04 20:54',
                             style: TextStyle(
                               color: Color(0xff767F88),
+                                fontSize: 15
                             )))
                   ]),
                   SizedBox(
-                    width: 140,
+                    width: 130,
                   ),
                   Row(
                     children: <Widget>[
@@ -234,6 +238,7 @@ Text('Balance',
                       Text('in processing',
                           style: TextStyle(
                             color: Color(0xff767F88),
+                              fontSize: 15
                           )),
                     ],
                   )
@@ -248,7 +253,7 @@ Text('Balance',
           Container(
             margin: EdgeInsets.only(left: 10.0, right: 10.0),
             child: Column(mainAxisSize: MainAxisSize.min, children: <Widget>[
-              SizedBox(height: 20,),
+              SizedBox(height: 25,),
               Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
@@ -262,7 +267,7 @@ Text('Balance',
                     style: TextStyle(color: Color(0xfffafafa), fontSize: 20),
                   )),
               SizedBox(
-                height: 20,
+                height: 25,
               ),
               Row(
                 children: <Widget>[
@@ -273,17 +278,19 @@ Text('Balance',
                     Row(children: <Widget>[
                       Text('Claimed',
                           style: TextStyle(
-                            color: Color(0xff767F88),
+                              color: Color(0xff767F88),
+                              fontSize: 15
                           )),SizedBox(width: 55,)]),//),
                     Align(
                         alignment: Alignment.bottomLeft,
                         child: Text('2019.05.04 20:54',
                             style: TextStyle(
-                              color: Color(0xff767F88),
+                                color: Color(0xff767F88),
+                                fontSize: 15
                             )))
                   ]),
                   SizedBox(
-                    width: 140,
+                    width: 130,
                   ),
                   Row(
                     children: <Widget>[
@@ -294,7 +301,8 @@ Text('Balance',
                       SizedBox(width: 10,),
                       Text('in processing',
                           style: TextStyle(
-                            color: Color(0xff767F88),
+                              color: Color(0xff767F88),
+                              fontSize: 15
                           )),
                     ],
                   )
